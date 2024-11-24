@@ -1,0 +1,3 @@
+{
+  "css.styleSheets": ["resources/css/**/*.css"]
+}
