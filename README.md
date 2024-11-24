@@ -3,7 +3,7 @@ CV Scoring Maxy academy virtual internship
 
 
 how to commit & push:
-🎉	feat :	Menambahkan fitur baru.
+⭐	feat :	Menambahkan fitur baru.
 🐛	fix :	Memperbaiki bug.
 📚	docs :	Mengupdate dokumentasi (README, tutorial, dll).
 💄	style :	Perubahan gaya (indentasi, spasi, dll).
