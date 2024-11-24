@@ -11,14 +11,16 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
   </head>
   <body>
     <header>
-      <nav class="navbar bg-body-tertiary shadow-sm  d-flex ">
+      <nav class="navbar bg-body-tertiary shadow-sm d-flex position-fixed w-100 top-0">
         <div class="container-fluid w-auto ms-5">
-          <a class="navbar-brand " href="#"> Logo </a>
+          <a class="navbar-brand" href="#"> Logo </a>
         </div>
         <div class="me-5">
           <button type="button" class="btn bg-light-subtle">Login</button>
@@ -27,15 +29,28 @@
       </nav>
     </header>
     <main>
-      <section>
-        <div id="content">
-          <article></article>
-          
+      <section id="homepage-section" class="m-5 p-5 d-flex justify-content-center align-items-center " style="height: 500px;">
+        <div id="content" class="w-50 h-100" >
+          <article class="d-flex flex-column w-75 ">
+            <h1 class="fw-bold text-primary">CV Scoring</h1>
+            <h3>Optimize Your CV To Increase Your Job Opportunities!</h3>
+            <h5 class="text-secondary fw-normal">
+              Use our CV Scoring service With advanced algorithms and in-depth
+              analysis, we provide objective assessments, helping you improve
+              your format, content, and keywords to suit the current job market
+              needs.
+            </h5>
+          </article>
+          <button type="button" class="btn btn-secondary mt-4">Sign Up</button>
         </div>
-        <div id="side-image"></div>
+        <div id="side-image" class="w-50 h-100 bg-body-tertiary">
+          <img src="" alt="" >
+        </div>
       </section>
     </main>
-    <footer></footer>
+    <footer class="bg-body-tertiary" style="height: 100px;">
+
+    </footer>
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>
