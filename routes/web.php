@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UploadCvController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/upload-cv', function () {
+    return view('upload-cv');
+})->name('upload.cv');
+
+
+Route::get('/upload-cv', [UploadCvController::class, 'showForm'])->name('upload.cv.form');
+Route::post('/upload-cv', [UploadCvController::class, 'uploadCv'])->name('upload.cv.store');

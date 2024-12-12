@@ -33,7 +33,7 @@
         <h1>CV Scoring</h1>
         <p class="lead">Optimize Your CV To Increase Your Job Opportunities!</p>
         <p>Use our CV Scoring service with advanced algorithms and in-depth analysis.</p>
-        <a class="btn btn-dark" href="#">Start a CV Scoring</a>
+        <a class="btn btn-dark" href="{{ route('upload.cv.form') }}">Start a CV Scoring</a>
       </div>
       <div class="col-lg-6 text-center">
         <img src="https://via.placeholder.com/400x300" alt="Illustration" class="img-fluid">
@@ -90,7 +90,7 @@
 <section class="py-5 bg-primary text-white text-center">
   <div class="container">
     <h2>Ready to advance your career?</h2>
-    <a class="btn btn-light" href="#">Start Now</a>
+    <a class="btn btn-light" href="{{ route('upload.cv.form') }}">Start Now</a>
   </div>
 </section>
 
