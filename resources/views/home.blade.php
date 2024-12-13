@@ -8,7 +8,7 @@
           <h1>CV Scoring</h1>
           <p class="lead">Optimize Your CV To Increase Your Job Opportunities!</p>
           <p>Use our CV Scoring service with advanced algorithms and in-depth analysis.</p>
-          <a class="btn btn-dark" href="/nilai">Start a CV Scoring</a>
+          <a class="btn btn-dark" href="/upload-cv">Start a CV Scoring</a>
         </div>
         <div class="col-lg-6 text-center">
           <img src="https://picsum.photos/400/300" alt="Illustration" class="img-fluid">

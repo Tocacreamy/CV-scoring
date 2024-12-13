@@ -59,10 +59,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 
 
-// Route::get('/upload-cv', function () {
-//     return view('upload-cv');
-// })->name('upload.cv');
+Route::get('/upload-cv', function () {
+    return view('upload-cv');
+})->name('upload.cv');
 
 
-// Route::get('/upload-cv', [UploadCvController::class, 'showForm'])->name('upload.cv.form');
-// Route::post('/upload-cv', [UploadCvController::class, 'uploadCv'])->name('upload.cv.store');
+Route::get('/upload-cv', [UploadCvController::class, 'showForm'])->name('upload.cv.form');
+Route::post('/upload-cv', [UploadCvController::class, 'uploadCv'])->name('upload.cv.store');
