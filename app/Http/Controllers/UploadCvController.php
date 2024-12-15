@@ -19,39 +19,45 @@ class UploadCvController extends Controller
         $request->validate([
             'cv' => 'required|file|mimes:pdf',
         ]);
-
+    
         $file = $request->file('cv');
-
+    
         if ($file->getSize() > 2048 * 1024) { 
             return redirect()->back()->with('error', 'Ukuran file terlalu besar! Maksimal 2MB.');
         }
-
+    
         $user = auth()->user();
-
+    
         $path = $file->store('cvs', 'public');
-
-        $randomNilai = rand(1, 100);
-
+    
+        $parser = new \Smalot\PdfParser\Parser();
+        $pdf = $parser->parseFile($file->getPathname());
+        $text = $pdf->getText();
+    
+        $charCount = strlen($text);
+    
         $grade = '';
-        if ($randomNilai >= 75 && $randomNilai <= 100) {
+        if ($charCount > 250) {
             $grade = 'A';
-        } elseif ($randomNilai >= 50 && $randomNilai < 75) {
+        } elseif ($charCount > 200) {
             $grade = 'B';
-        } elseif ($randomNilai >= 25 && $randomNilai < 50) {
+        } elseif ($charCount > 150) {
             $grade = 'C';
         } else {
             $grade = 'D';
         }
-
+    
+        // Simpan data ke database
         $penilaian = \App\Models\Penilaian::create([
             'cv' => $path,
-            'nilai' => $randomNilai,
+            'nilai' => $charCount,
             'grade' => $grade,
             'user_id' => $user->id,
         ]);
-
+    
         return redirect()->route('nilai', ['id' => $penilaian->id]);
     }
+    
 
     public function nilai($id)
     {

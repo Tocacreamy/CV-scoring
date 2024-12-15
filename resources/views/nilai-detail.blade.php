@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4 text-center">
-                <p class="lead">Setelah kami tinjau berdasarkan standar internasional, CV Anda mendapat nilai:</p>
-                <h1 class="display-1 fw-bold">{{ $nilai->nilai }}%</h1>
+                <p class="lead">Setelah kami proses cv kamu mengandung sebanyak <b>{{ $nilai->nilai }}</b> karakter, dan CV Anda mendapat nilai:</p>
+                <h1 class="display-1 fw-bold">{{ $nilai->grade }}</h1>
                 <p>Penilaian ini menggunakan algoritma canggih untuk menganalisis struktur, konten, dan relevansi CV Anda.</p>
                 <a class="btn btn-dark" href="/upload-cv">Coba Lagi</a>
             </div>
