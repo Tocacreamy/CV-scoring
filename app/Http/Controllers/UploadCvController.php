@@ -2,47 +2,96 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penilaian;
+use App\Models\Rekomendasi;
 use Illuminate\Http\Request;
-use Smalot\PdfParser\Parser;
 use Illuminate\Support\Facades\Storage;
 
 class UploadCvController extends Controller
 {
-    // Show the upload form
     public function showForm()
     {
         return view('upload-cv');
     }
 
-    // Handle the uploaded CV and process the text
     public function uploadCv(Request $request)
     {
-        // Validate that the uploaded file is a PDF and not too large
         $request->validate([
-            'cv' => 'required|mimes:pdf|max:2048', // 2MB max size
+            'cv' => 'required|file|mimes:pdf',
         ]);
 
-        // Get the uploaded file
         $file = $request->file('cv');
 
-        // Parse the PDF using the smalot/pdfparser package
-        $parser = new Parser();
-        $pdf = $parser->parseFile($file->getPathname());
+        if ($file->getSize() > 2048 * 1024) { 
+            return redirect()->back()->with('error', 'Ukuran file terlalu besar! Maksimal 2MB.');
+        }
 
-        // Extract text from the PDF
-        $text = $pdf->getText();
+        $user = auth()->user();
 
-        // Save the extracted text to a .txt file in the 'public/cvs' folder
-        $fileName = time() . '_cv.txt';
-        $filePath = 'public/cvs/' . $fileName;
+        $path = $file->store('cvs', 'public');
 
-        // Store the extracted text in the 'public' directory
-        Storage::put($filePath, $text);
+        $randomNilai = rand(1, 100);
 
-        // Generate a URL to access the file
-        $fileUrl = Storage::url($filePath);
+        $grade = '';
+        if ($randomNilai >= 75 && $randomNilai <= 100) {
+            $grade = 'A';
+        } elseif ($randomNilai >= 50 && $randomNilai < 75) {
+            $grade = 'B';
+        } elseif ($randomNilai >= 25 && $randomNilai < 50) {
+            $grade = 'C';
+        } else {
+            $grade = 'D';
+        }
 
-        // Return a success message with the file URL
-        return back()->with('success', 'CV uploaded and processed successfully! You can view the processed text here: <a href="' . $fileUrl . '" target="_blank">' . $fileUrl . '</a>');
+        $penilaian = \App\Models\Penilaian::create([
+            'cv' => $path,
+            'nilai' => $randomNilai,
+            'grade' => $grade,
+            'user_id' => $user->id,
+        ]);
+
+        return redirect()->route('nilai', ['id' => $penilaian->id]);
     }
+
+    public function nilai($id)
+    {
+        $active = "detail-nilai";
+        $nilai = Penilaian::find($id);
+
+        if ($nilai) {
+            $rekomendasi = Rekomendasi::where('grade', $nilai->grade)->get();
+            // return dd($rekomendasi);
+            return view('nilai-detail', compact('nilai', 'rekomendasi', 'active'));
+        } else {
+            return redirect('/histori')->with('error', 'Data tidak ditemukan');
+        }
+    }
+    
+    public function histori()
+    {
+        $active = "histori";
+        $penilaian = Penilaian::where('user_id', auth()->user()->id)->get();
+
+        return view('histori', compact('active', 'penilaian'));
+    }
+
+    public function deleteNilai($id)
+    {
+        $penilaian = Penilaian::find($id);
+    
+        if (!$penilaian) {
+            return redirect('/histori')->with('error', 'Data tidak ditemukan.');
+        }
+    
+        $filePath = $penilaian->cv;
+    
+        if (Storage::disk('public')->exists($filePath)) {
+            Storage::disk('public')->delete($filePath);
+        }
+    
+        $penilaian->delete();
+    
+        return redirect('/histori')->with('success', 'Data berhasil dihapus.');
+    }
+    
 }

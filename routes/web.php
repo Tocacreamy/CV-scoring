@@ -36,33 +36,25 @@ Route::get('/panduan', function ()
     ]);
 });
 
-Route::get('/nilai', function () 
-{
-    return view('nilai', [
-        "active" => "nilai",
-    ]);
-});
-
-Route::get('/nilai/histori', function () 
+Route::get('/histori', function () 
 {
     return view('histori', [
         "active" => "histori",
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
+Route::get('/upload-cv', [UploadCvController::class, 'showForm'])->name('upload.cv.form')->middleware('auth');
+Route::post('/upload-cv', [UploadCvController::class, 'uploadCv'])->name('upload.cv.store')->middleware('auth');
 
+Route::get('/nilai/{id}', [UploadCvController::class, 'nilai'])->name('nilai')->middleware('auth');
+Route::delete('/nilai/{id}', [UploadCvController::class, 'deleteNilai'])->middleware('auth');
 
-Route::get('/upload-cv', function () {
-    return view('upload-cv');
-})->name('upload.cv');
-
-
-Route::get('/upload-cv', [UploadCvController::class, 'showForm'])->name('upload.cv.form');
-Route::post('/upload-cv', [UploadCvController::class, 'uploadCv'])->name('upload.cv.store');
+Route::get('/histori', [UploadCvController::class, 'histori'])->middleware('auth');
