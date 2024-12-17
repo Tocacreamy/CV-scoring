@@ -11,7 +11,7 @@
           <a class="btn btn-dark" href="/upload-cv">Start a CV Scoring</a>
         </div>
         <div class="col-lg-6 text-center">
-          <img style="border-radius: 1rem;" src="https://picsum.photos/400/300" alt="Illustration" class="img-fluid">
+          <img style="border-radius: 1rem;" src="{{ asset('images/style-image/Desktop.svg') }}" alt="Illustration" class="img-fluid">
         </div>
       </div>
     </div>
@@ -36,28 +36,28 @@
       <div class="row justify-content-center g-4">
         <div class="col-md-4">
           <div class="card">
-            <img src="https://picsum.photos/seed/picsum/400/300" class="card-img-top" alt="...">
+            <img src="{{ asset('images/style-image/increase-ur-change.svg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Build ATS friendly resumes</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">Increase Your Chances</h5>
+              <p class="card-text">Your CV will be assessed using current industry standards to ensure it is suitable for recruiters.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card">
-            <img src="https://picsum.photos/seed/night/400/300" class="card-img-top" alt="...">
+            <img src="{{ asset('images/style-image/strength.svg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Build ATS friendly resumes</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">Identify Strengths and Weaknesses</h5>
+              <p class="card-text">Find the best aspects of your CV and improve the elements that can be improved.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card">
-            <img src="https://picsum.photos/seed/cv/400/300" class="card-img-top" alt="...">
+            <img src="{{ asset('images/style-image/personalize.svg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Build ATS friendly resumes</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">Personalized Professional Advice</h5>
+              <p class="card-text">Get recommendations tailored to the job position you want.</p>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 text-center">
-          <img style="border-radius: 1rem;" src="https://picsum.photos/400/300" alt="Illustration" class="img-fluid">
+          <img style="border-radius: 1rem;" src="{{ asset('images/style-image/resume-score.svg') }}" alt="Illustration" class="img-fluid">
         </div>
         <div class="col-lg-6">
           <h1>Improve your resume's score</h1>
@@ -80,10 +80,13 @@
     </div>
   </section>
 
-  <section style="background-image: url('{{ asset('images/bg-bottom.png') }}'); background-size: cover; background-position: bottom;" class="d-flex flex-column justify-content-center align-items-center text-center py-5" >
+  <!-- <section style="background-image: url('{{ asset('images/bg-bottom.png') }}'); background-size: cover; background-position: bottom;" class="d-flex flex-column justify-content-center align-items-center text-center py-5" >
     <h1 class="mb-4 text-light">Ready to advance your career?</h1>
     <a href="/upload-cv" style="background-color: white; color:black" class="btn">START NOW</a>
-</section>
+</section> -->
+<footer>
+  <img class="w-100" src="{{ asset('images/style-image/Footer.svg') }}" alt="">
+</footer>
 
   
 @endsection

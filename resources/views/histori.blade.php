@@ -83,4 +83,7 @@
         </div>
     </section>
 
+    <footer>
+  <img class="w-100" src="{{ asset('images/style-image/Footer.svg') }}" alt="">
+</footer>
 @endsection
