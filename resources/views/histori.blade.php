@@ -62,7 +62,7 @@
                         @foreach ($penilaian as $nilai)
                             <li class="table-row li-table">
                                 <div class="col-table col-table-1" data-label="No">{{ $loop->iteration }}</div>
-                                <div class="col-table col-table-2" data-label="Skor">{{ $nilai->grade }} ({{ $nilai->nilai }} %)</div>
+                                <div class="col-table col-table-2" data-label="Skor">{{ $nilai->nilai }} poin</div>
                                 <div class="col-table col-table-3" data-label="Tanggal">{{ $nilai->created_at->format('d-m-Y H:i') }}</div>
                                 <div class="col-table col-table-4" data-label="Action">
                                   <a class="badge bg-info" href="/nilai/{{ $nilai->id }}}"><i class="bi bi-eye-fill"></i></a>

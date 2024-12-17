@@ -17,7 +17,8 @@ class CreatePenilaiansTable extends Migration
             $table->id();
             $table->string('cv');
             $table->integer('nilai');
-            $table->char('grade', 1);
+            $table->text('strong_words')->nullable();
+            $table->integer('jumlah_halaman');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

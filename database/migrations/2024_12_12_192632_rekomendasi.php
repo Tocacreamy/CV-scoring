@@ -18,7 +18,6 @@ class Rekomendasi extends Migration
             $table->string('nama');
             $table->string('deskripsi');
             $table->string('image');
-            $table->char('grade', 1);
             $table->timestamps();
         });
     }
