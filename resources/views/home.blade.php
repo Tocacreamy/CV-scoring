@@ -17,7 +17,7 @@
     </div>
   </section>
 
-  <section style="background-color: #999999; border-top-right-radius: 200px; border-bottom-left-radius: 200px;" class="py-5">
+  <!-- <section style="background-color: #999999; border-top-right-radius: 200px; border-bottom-left-radius: 200px;" class="py-5">
     <div class="container">
       <div class="px-5 d-flex justify-content-between align-items-center gap-4">
         <h6 class="fs-6">Our customers have been hired at:</h6>
@@ -27,7 +27,7 @@
         <img src="{{ asset('images/logo4.png') }}" alt="Logo" class="img-fluid">
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section class="py-5 mt-5">
     <div class="container">
